@@ -10,13 +10,19 @@ enum LABEL_ALIGNMENT {
 }
 
 var control: Control
-@onready var label = $Label
+@onready var label_control = $Label
+
+@export var label: String = "Label":
+	set(l):
+		label = l
+		if label_control != null:
+			label_control.text = label
 
 @export_range(.1, 2.0, .1) var label_scaling: float = 1.0:
 	set(v):
 		label_scaling = v
-		if not label == null:
-			label.size_flags_stretch_ratio = v
+		if not label_control == null:
+			label_control.size_flags_stretch_ratio = v
 	get:
 		return label_scaling
 
@@ -26,7 +32,9 @@ var control: Control
 		_on_change_alignment()
 
 func _ready() -> void:
-	label.size_flags_stretch_ratio = label_scaling
+	if not label_control == null:
+		label_control.size_flags_stretch_ratio = label_scaling
+		label_control.text = label
 
 func _on_change_alignment() -> void:
 	match label_align:

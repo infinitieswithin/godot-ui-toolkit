@@ -1,5 +1,24 @@
-[gd_scene format=3 uid="uid://bjskpg8n6v6mp"]
+[gd_scene load_steps=3 format=3 uid="uid://bjskpg8n6v6mp"]
+
+[ext_resource type="PackedScene" uid="uid://dqc6wueb2ayy3" path="res://ui-toolkit/control_label.tscn" id="1_vl27l"]
+[ext_resource type="PackedScene" uid="uid://cqxg727fvr1rd" path="res://ui-toolkit/number_edit.tscn" id="2_ye24e"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 234.0
+offset_top = 144.0
+offset_right = 331.0
+offset_bottom = 162.0
+
+[node name="ControlLabel" parent="MarginContainer" instance=ExtResource("1_vl27l")]
+layout_mode = 2
+label = "Float:"
+
+[node name="NumberEditor" parent="MarginContainer/ControlLabel" instance=ExtResource("2_ye24e")]
+layout_mode = 2
+size_flags_horizontal = 3
+minimum = -1.0
+maximum = 1.0
