@@ -103,7 +103,7 @@ func _on_value_changed() -> void:
 	_position_cursor()
 
 
-func _on_text_submitted(new_text):
+func _on_text_submitted(_new_text):
 	await get_tree().process_frame
 	release_focus()
 
